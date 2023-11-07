@@ -1,0 +1,24 @@
+<section class="platform py-md-4">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12 col-12">
+          <h2 class="plt-heading">Codexview is a high-quality tech training platform.</h2>
+          <p class="text-muted py-1">Learn fundamental and state-of-the-art programming skills using modern
+            technologies.</p>
+          <div class="slide p-md-5 p-4 border position-relative">
+            <owl-carousel-o [options]="customOption" class="training-platform slider">
+                <ng-template carouselSlide *ngFor="let training of trainingSlide; index as i">
+                    <div class="item py-4 rounded">
+                        <a href="{{training.link}}">
+                        <div class="html-5-img rounded-circle bg-white p-5 d-flex" [innerHTML]="training.svg"></div>
+                        <h5 class="pt-2 text-black fw-bold m-0">{{training.text}}</h5>
+                        </a>
+                      </div>
+                </ng-template>
+              </owl-carousel-o>
+          </div>
+        </div>
+      
+      </div>
+    </div>
+  </section>

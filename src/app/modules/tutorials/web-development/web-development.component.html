@@ -1,0 +1,25 @@
+<app-about-banner [name]="currentItem" [bnrImg]="bnrImg"></app-about-banner>
+<section class="online-courses py-4">
+    <div class="container">
+      <h2 class="sub-heading">Web Development</h2>
+      <p>The best free web development tutorials</p>
+      <div class="row">
+        <ng-container *ngFor="let item of skillData">
+          <div *ngIf="item.category_id === '4'" class="col-md-3">
+            <div class="card tutorial-item pt-2 mb-3">
+              <div class="card-body">
+                <div class="free-tutorial rounded-circle" [ngClass]="item.bg_class">
+                  <div [innerHTML]="getSanitizedSvg(item.image)"></div>
+                </div>
+                <h5 class="pt-3 fw-bold m-0">{{ item.skill }}</h5>
+              </div>
+              <a [routerLink]="item.page_url" [title]="item.skill" class="view-tutorial fw-5">
+                View Tutorials
+              </a>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </section>
+  <app-popular-tutorial></app-popular-tutorial>

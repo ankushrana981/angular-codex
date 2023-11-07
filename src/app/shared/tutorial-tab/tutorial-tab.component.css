@@ -1,0 +1,10 @@
+::ng-deep.custom-tab-group .mat-tab-body-content{
+    overflow: hidden !important;
+}
+::ng-deep.custom-tab-group {
+    font-family:'Catamaran', sans-serif !important;
+}
+::ng-deep.custom-tab-group .mat-tab-labels{
+        justify-content: center !important;
+       
+}

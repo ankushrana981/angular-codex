@@ -1,0 +1,23 @@
+<app-about-banner [name]="currentItem" [bnrImg]="bnrImg"></app-about-banner>
+<section class="online-courses py-4">
+    <div class="container">
+        <h2 class="sub-heading">Lets Take a Quiz</h2>
+        <p>The best free all technologies qizes</p>
+        <div class="row">
+
+            <div class="col-md-3" *ngFor="let item of quizeData">
+                <div class="card tutorial-item pt-2 mb-3">
+                    <div class="card-body">
+                        <div [ngClass]="['free-tutorial', 'rounded-circle', item.bg_class]">
+                            <div [innerHTML]="getSanitizedSvg(item.image)"></div>
+                        </div>
+                        <h5 class="pt-3 fw-bold m-0">{{ item.skill }}</h5>
+                        <a [routerLink]="['/quizes', item.page_url]" [title]="item.skill" class="view-tutorial fw-5">
+                            Take a Quiz
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+</section>

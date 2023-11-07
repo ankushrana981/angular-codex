@@ -1,0 +1,131 @@
+
+  @media (min-width: 768px) {
+    .popular-tutorials h3 {
+      font-size: 20px;
+    }
+  }
+  
+  .popular-tutorials h5 {
+    font-size: 25px;
+  }
+  
+  @media (min-width: 768px) {
+    .popular-tutorials h5 {
+      font-size: 21px;
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .popular-tutorials h5 {
+      font-size: 16px;
+      line-height: 30px;
+    }
+  }
+  
+  .popular-tutorials .item {
+    border-radius: 4px;
+    background-color: #ffffff;
+    border: 1px solid #dee2e6;
+    text-align: center;
+    padding: 10px 5px;
+    margin: 5px;
+    z-index: 9;
+    transition: all ease-in-out 0.2s;
+    display: block;
+    color: #36363cab;
+    text-transform: uppercase;
+    font-size: 13px;
+    font-weight: 700;
+  }
+  
+  .popular-tutorials .item ::ng-deep svg {
+    min-height: 36px;
+    display: block;
+    margin: 0 auto;
+  }
+  
+  .popular-tutorials .item ::ng-deep svg.php {
+    fill: #787cb4;
+  }
+  
+  .popular-tutorials .item ::ng-deep svg.laravel {
+    fill: #eb4d43;
+  }
+  
+  .popular-tutorials .item ::ng-deep svg.angular {
+    fill: #dd0031;
+  }
+  
+  .popular-tutorials .item ::ng-deep svg.react {
+    fill: #61dbfb;
+  }
+  
+  .popular-tutorials .item ::ng-deep svg.vue {
+    fill: #3fb27f;
+  }
+  
+  .popular-tutorials .item ::ng-deep svg.css {
+    fill: #254bdd;
+  }
+  
+  .popular-tutorials .item ::ng-deep svg.html {
+    fill: #dd4b25;
+  }
+  
+  .popular-tutorials .item ::ng-deep svg.javacsript {
+    fill: #f49930;
+  }
+  
+  .popular-tutorials .item ::ng-deep svg.bootstrap {
+    fill: #533b78;
+  }
+  
+  .popular-tutorials .item ::ng-deep svg.figma {
+    fill: #0049d0;
+  }
+  
+  .popular-tutorials .item:hover ::ng-deep svg {
+    fill: white !important;
+  }
+  
+  .popular-tutorials .item:hover {
+    border-color: #0093f9;
+    background: #0093f9;
+    color: #fff;
+  }
+  
+  .popular-tutorials .item:hover::before {
+    filter: invert(1) brightness(10000);
+  }
+  
+  .popular-tutorials ::ng-deep.owl-theme .owl-nav {
+    justify-content: space-between;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 25%;
+    transform: translate(0px, -50%);
+    margin: auto;
+    z-index: -1;
+    display: flex;
+  }
+  
+  .popular-tutorials ::ng-deep.owl-theme .owl-nav [class*='owl-'] {
+    font-size: 22px;
+    color: #0093fa;
+    background: none;
+    padding: 4px 0;
+  }
+  
+  .popular-tutorials ::ng-deep.owl-theme .owl-nav [class*='owl-']:hover {
+    background: none;
+    color: #0093fa;
+  }
+  
+  .popular-tutorials ::ng-deep.owl-theme .owl-nav .owl-prev i {
+    margin-left: -45px;
+  }
+  
+  .popular-tutorials ::ng-deep.owl-theme .owl-nav .owl-next i {
+    margin-right: -45px;
+  }

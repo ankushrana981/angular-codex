@@ -1,0 +1,57 @@
+<section class="pt-3 bg-light tutorial-info">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-3">
+        <div class="card">
+          <div class="accordion accordion-flush" id="accordionPanelsStayOpenExample">
+            <div class="accordion-item" *ngFor="let item of chapterList; let i = index">
+              <h2 class="accordion-header" [id]="'panelsStayOpen-heading' + i">
+                <button class="accordion-button" type="button" [attr.data-bs-toggle]="'collapse'" [attr.data-bs-target]="'#panelsStayOpen-collapse' + i"
+                  [attr.aria-expanded]="i === 0" [attr.aria-controls]="'panelsStayOpen-collapse' + i">
+                  {{ item.skill_chapterName }}
+                </button>
+              </h2>
+              <div [id]="'panelsStayOpen-collapse' + i" class="accordion-collapse collapse" [class.show]="i === 0"
+                [attr.aria-labelledby]="'panelsStayOpen-heading' + i">
+                <div class="accordion-body start-html" (click)="navigation(subChapter.id, item)"
+                  *ngFor="let subChapter of item.sub_chapter">
+                  {{ subChapter.name }}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-7 mb-5">
+        <div class="chapterStart">
+          <div class="chapters p-3 bg-white">
+            <div [innerHTML]="chapterData?.description"></div>
+
+            <!-- Add your loader content here -->
+            Loading...
+          </div>
+          <div class="nextprev-btn">
+            <p class="pre-btn" (click)="chapterData.previous_page_url !== null && navigateToPreviousChapter()">
+              <svg width="7" height="13" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M6.39962 12.5479L6.96755 11.9027L1.54679 6.91294L6.40816 1.35299L5.77533 0.774308L0.349957 6.97931L6.39962 12.5479Z"
+                  fill="#212529"></path>
+              </svg>
+              &nbsp; Previous Chapter
+            </p>
+            <p class="next-btn" (click)="navigateToNextChapter()">
+              Next Chapter &nbsp;
+              <svg width="8" height="13" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M1.59491 0.267833L0.96986 0.855294L5.90497 6.34688L0.551304 11.4118L1.1278 12.0491L7.10258 6.39654L1.59491 0.267833Z"
+                  fill="#212529"></path>
+              </svg>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-2">
+    </div>
+  </div>
+</section>

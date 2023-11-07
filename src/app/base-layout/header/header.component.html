@@ -1,0 +1,151 @@
+<header class="site-header">
+   
+
+    <div class="top-header py-3">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-3 col-lg-4 d-none d-md-block">
+            <a [routerLink]="'/'" title="Codex View">
+              <img src="assets/images/codex-logo.svg" alt="Codex View" class="navbar-brand">
+            </a>
+          </div>
+          <div class="col-md-9 col-lg-8 justify-content-end m-auto d-flex">
+            <form [ngClass]="{ 'form inp': user, 'form': !user }" (ngSubmit)="handleSearch()">
+              <select
+                [(ngModel)]="searchValue"
+                name="searchValue"
+                class="form-select"
+                placeholder="'Search our tutorials, e.g. HTML, CSS'" style="width: 389px; border-radius: 50px; margin-right: 20px;"> <option selected value="">Search our tutorials, e.g. HTML, CSS, Angular</option>
+                <option *ngFor="let option of aquaticCreatures" [value]="option.value">{{ option.label }}</option>
+              </select>
+              <button type="submit" class="search-btn">
+                <svg width="18" height="18" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M17.7731 16.7107L12.6087 11.5426C13.6268 10.3216 14.2392 8.76115 14.2392 7.05688C14.2392 3.16877 11.0483 0.00738525 7.12327 0.00738525C3.19828 0.00738525 0 3.17246 0 7.06057C0 10.9487 3.1909 14.1101 7.11589 14.1101C8.78328 14.1101 10.3179 13.5383 11.5352 12.5829L16.7181 17.7658C17.0206 18.0683 17.4706 18.0683 17.7731 17.7658C18.0756 17.4633 18.0756 17.0132 17.7731 16.7107ZM1.51245 7.06057C1.51245 4.00616 4.02828 1.52352 7.11589 1.52352C10.2035 1.52352 12.7193 4.00616 12.7193 7.06057C12.7193 10.115 10.2035 12.5976 7.11589 12.5976C4.02828 12.5976 1.51245 10.1113 1.51245 7.06057Z" fill="#212529"></path>
+                </svg>
+              </button>
+            </form>
+            <div class="vr d-none d-md-inline-block"></div>
+            <ng-container *ngIf="user; else loginSignupBlock">
+              <div class="position-relative align-self-center user-header" style="cursor: pointer" (click)="toggleUserDetail()">
+                <div class="userLogin mx-3 d-flex justify-content-between align-items-center">
+                  <div class="userChar">{{ user.name.charAt(0).toUpperCase() }}</div>
+                </div>
+                <div class="userDetails position-absolute" [style.display]="hideUserDetail ? 'block' : 'none'">
+                  <div class="d-flex align-items-center border-bottom px-3 py-2 my-2" (click)="navigateToUserDetails()">
+                    <div class="userChar border">{{ user.name.charAt(0).toUpperCase() }}</div>
+                    <div class="usernameText mx-2" style="color: #212529">{{ user.name.charAt(0).toUpperCase + user.name.slice(1) }}</div>
+                  </div>
+                  <div class="d-flex mx-3 my-2 justify-content-between border-bottom">
+                    <div>
+                      <p (click)="navigateToUserBlogs()" style="color: #212529">Blogs</p>
+                    </div>
+                    <div class="eclipsRound">{{ user.blogs.length || 0 }}</div>
+                  </div>
+                  <div class="d-flex mx-3 my-2 justify-content-between border-bottom">
+                    <div>
+                      <p (click)="navigateToUserIssues()" style="color: #212529">Issue</p>
+                    </div>
+                    <div class="eclipsRound">{{ user.issues.length || 0 }}</div>
+                  </div>
+                  <div class="d-flex align-items-center pt-2 pb-4 mx-3" style="cursor: pointer" (click)="handleLogout()">
+                    <img src="assets/images/Logout.svg" alt="logout" title="logout" />
+                    <div class="mx-2">Logout</div>
+                  </div>
+                </div>
+              </div>
+            </ng-container>
+            <ng-template #loginSignupBlock>
+              <div class="d-flex justify-content-evenly">
+                <button class="btn-login bg-white align-self-center ms-3 text-dark" (click)="navigateToLogin()">
+                  <svg class="me-1" width="13" height="13" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 6.49863C0 6.70112 0.161994 6.86312 0.364486 6.86312H9.16885L7.28162 8.75034C7.13852 8.89344 7.13852 9.12293 7.28162 9.26602C7.35182 9.33622 7.44631 9.37402 7.53811 9.37402C7.62991 9.37402 7.7244 9.33892 7.7946 9.26602L10.3055 6.75512C10.4486 6.61203 10.4486 6.38253 10.3055 6.23944L7.7946 3.72854C7.6515 3.58544 7.42201 3.58544 7.27892 3.72854C7.13582 3.87163 7.13582 4.10112 7.27892 4.24422L9.16615 6.13144H0.364486C0.161994 6.13414 0 6.29614 0 6.49863Z" fill="#212529"></path>
+                    <path d="M10.3244 0H2.6729C1.19875 0 0 1.19875 0 2.6729V4.24424C0 4.44673 0.161994 4.60872 0.364486 4.60872C0.566978 4.60872 0.728972 4.44673 0.728972 4.24424V2.6729C0.728972 1.60104 1.60104 0.728972 2.6729 0.728972H10.3271C11.399 0.728972 12.271 1.60104 12.271 2.6729V10.3271C12.271 11.399 11.399 12.271 10.3271 12.271H2.6729C1.60104 12.271 0.728972 11.399 0.728972 10.3271V8.77466C0.728972 8.57217 0.566978 8.41018 0.364486 8.41018C0.161994 8.41018 0 8.57217 0 8.77466V10.3271C0 11.8012 1.19875 13 2.6729 13H10.3271C11.8012 13 13 11.8012 13 10.3271V2.6729C12.9973 1.19875 11.7985 0 10.3244 0Z" fill="#212529"></path>
+                  </svg>
+                  Login
+                </button>
+                <button class="btn-login align-self-center ms-3 text-white" (click)="navigateToSignup()">
+                  <svg class="me-1" width="20" height="14" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M6 7.052C7.995 7.052 9.5 5.547 9.5 3.552C9.5 1.557 7.995 0.052002 6 0.052002C4.005 0.052002 2.5 1.557 2.5 3.552C2.5 5.547 4.005 7.052 6 7.052ZM7 8H5C2.243 8 0 10.243 0 13V14H12V13C12 10.243 9.757 8 7 8ZM18.294 3.292L13.994 7.584L12.702 6.292L11.288 7.706L13.994 10.41L19.706 4.708L18.294 3.292Z" fill="white"></path>
+                  </svg>
+                  Sign Up
+                </button>
+              </div>
+            </ng-template>
+          </div>
+        </div>
+      </div>
+    </div>
+    <nav class="navbar navbar-expand-md navbar-light">
+      <div class="container"><a class="navbar-brand d-md-none d-sm-block" title="Codex View" href="/"><img
+            alt="Codex View" title="Codex View" src="/_next/static/media/codex-logo.2276ebbb.svg" width="132"
+            height="45"></a><button
+          class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+          aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation"><span
+            class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse false" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item"><a [routerLink]="'/'" class="nav-link" [ngClass]="{'active': isActive('/')}">Home</a>
+            </li>
+            <li class="nav-item dropdown d-none d-md-block" [ngClass]="{'active': isNavLinkActive()}">
+              <a class="nav-link dropdown-toggle" id="navbarDropdown" title="Codex View Tutorials" data-bs-toggle="dropdown" aria-expanded="false">
+                 Tutorials
+                 <svg width="13" height="9" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12.733 0.283142H11.7093L6.7088 6.62221C6.65816 6.68438 6.58045 6.72098 6.50024 6.72098C6.41802 6.72098 6.34231 6.68438 6.29017 6.62221L1.29121 0.283142H0.266955C0.163677 0.283142 0.0704256 0.340797 0.0268082 0.433046C-0.0183133 0.525294 -0.00527819 0.63509 0.0568892 0.714303L6.29117 8.61658C6.34331 8.67925 6.41902 8.71685 6.50124 8.71685C6.58146 8.71685 6.65916 8.67925 6.7098 8.61658L12.9431 0.713802C13.0073 0.63509 13.0173 0.524793 12.9722 0.432544C12.9295 0.340797 12.8353 0.283142 12.733 0.283142"></path>
+                 </svg>
+              </a>
+              <div class="submenu p-4">
+                 <h2 class="text-white">Tutorials</h2>
+                 <div class="submenu-2 d-flex pt-3">
+                    <div class="circle-icon w-50">
+                       <h5 class="text-white pb-3 fw-bold">Courses</h5>
+                       <a [routerLink]="'/web-development'" title="Web Development Tutorials" class="d-flex text-white align-self-center pb-0 mb-3">
+                          <svg width="16" height="16" fill="currentColor" class="bi bi-check2-circle" viewBox="0 0 16 16">
+                             <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z"></path>
+                             <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z"></path>
+                          </svg>
+                          <p class="ms-2 fw-bold">Web Development</p>
+                       </a>
+                       <a [routerLink]="'/web-designing'" title="Web Designing Tutorials" class="d-flex text-white">
+                          <svg width="16" height="16" fill="currentColor" class="bi bi-check2-circle" viewBox="0 0 16 16">
+                             <path d="M2.5 8a5.5 5.5 0 0 1 8.25-4.764.5.5 0 0 0 .5-.866A6.5 6.5 0 1 0 14.5 8a.5.5 0 0 0-1 0 5.5 5.5 0 1 1-11 0z"></path>
+                             <path d="M15.354 3.354a.5.5 0 0 0-.708-.708L8 9.293 5.354 6.646a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l7-7z"></path>
+                          </svg>
+                          <p class="ms-2 fw-bold">Web Designing</p>
+                       </a>
+                    </div>
+                    <div class="menu-btn w-50">
+                       <h5 class="text-white fw-bold">Skills</h5>
+                       <a [routerLink]="'/php'" title="Web Development PHP Tutorials" class="btn btn-light mb-2 me-1">PHP</a>
+                       <a [routerLink]="'/web-development'" title="Web Development Laravel Tutorials" class="btn btn-light mb-2 me-1">Laravel</a>
+                       <a [routerLink]="'/angular'" title="Web Designing Angular Tutorials" class="btn btn-light mb-2 me-1">Angular</a>
+                       <a [routerLink]="'/reactjs'" title="Web Designing React.js Tutorials" class="btn btn-light mb-2 me-1">React Js</a>
+                       <a [routerLink]="'/codeigniter'" title="Web Development CodeIgniter Tutorials" class="btn btn-light mb-2 me-1">CodeIgniter</a>
+                       <a [routerLink]="'/web-designing/'" title="Web Designing Vue.js Tutorials" class="btn btn-light mb-2 me-1">VueJS</a>
+                       <a [routerLink]="'/jquery'" title="Web Designing J-Query Tutorials" class="btn btn-light mb-2 me-1">J-Query</a>
+                       <a [routerLink]="'/javascript'" title="Web Designing JavaScript Tutorials" class="btn btn-light mb-2 me-1">JavaScript</a>
+                       <a [routerLink]="'/html5'" title="Web Designing HTML5 Tutorials" class="btn btn-light mb-2 me-1">Html5</a>
+                       <a [routerLink]="'/css3'" title="Web Designing CSS3 Tutorials" class="btn btn-light mb-2 me-1">Css3</a>
+                    </div>
+                 </div>
+              </div>
+           </li>
+            <li class="nav-item d-block d-md-none"><a class="nav-link false" title="Web Designing tutorials"
+                href="/web-development">Web Development</a></li>
+            <li class="nav-item d-block d-md-none"><a class="nav-link false" title="Web Development tutorials"
+                href="/web-designing">Web Designing</a></li>
+            <li class="nav-item"><a [routerLink]="'/courses'" class="nav-link" [ngClass]="{'active': isActive('/courses')}">Courses</a></li>
+            <li class="nav-item"><a  [routerLink]="'/issues'" class="nav-link" [ngClass]="{'active': isActive('/issues') || isActive('/post-issue') || isActive('/issues/' + slug)}" title="Issues" class="nav-link ">Issues</a></li>
+            <li class="nav-item">
+              <a [routerLink]="'/blog'" class="nav-link" [ngClass]="{'active': isActive('/blog') || isActive('/post-blogs') || isActive('/blog/' + slug)}">Blog</a>
+
+            </li>
+            <li class="nav-item"><a [routerLink]="'/quizes'" class="nav-link" [ngClass]="{'active': isActive('/quizes')}" title="Quizes">Quizes</a></li>
+            <li class="nav-item"><a [routerLink]="'/about'" class="nav-link" [ngClass]="{'active': isActive('/about')}" title="About Us">About Us</a></li>
+            <li class="nav-item"><a [routerLink]="'/contact'" class="nav-link" [ngClass]="{'active': isActive('/contact')}" title="Contact Us">Contact Us</a></li>
+          </ul>
+        </div><a title="View Online Tutorials" class="online-tut" href="/web-designing"><button
+            class="btn btn-outline-warning ">View Online Tutorials</button></a>
+      </div>
+    </nav>
+    
+  </header>

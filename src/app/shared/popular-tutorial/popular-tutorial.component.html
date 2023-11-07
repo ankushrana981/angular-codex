@@ -1,0 +1,16 @@
+
+<section class="popular-tutorials py-md-4">
+    <div class="container">
+      <div class="text-center">
+        <h2 class="popular-site-heading fs-1">Popular <span>Tutorials</span></h2>
+        <p class="sub-heading">Here are some of our popular resources</p>
+        <owl-carousel-o [options]="customOptions">
+          <ng-template
+            carouselSlide
+            *ngFor="let technology of technologySlide; index as i">
+            <a class="item" routerLink="technologies.html" [innerHTML]="technology.icon"></a>
+          </ng-template>
+        </owl-carousel-o>
+      </div>
+    </div>
+  </section>

@@ -1,0 +1,19 @@
+<app-about-banner [name]="currentItem" [bnrImg]="bnrImg"></app-about-banner>
+<section class="online-course py-4">
+    <div class="container">
+        <h2 class="sub-heading">Courses</h2>
+        <p>Most popular courses</p>
+        <div class="row">
+          
+                <div class="col-sm-6 pb-4" *ngFor="let item of courseData">
+                    <div class="card">
+                        <div class="card-body m-3">
+                            <h4 class="free-tutorial">{{item.name}}</h4>
+                            <p class="fs-6"><b>Courses:</b> {{item.desc}}</p>
+                            <a href={{item.link}} title={{item.name}} class="btn">View More</a>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+</section>

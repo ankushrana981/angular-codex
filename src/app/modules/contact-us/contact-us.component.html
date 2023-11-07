@@ -1,0 +1,54 @@
+<app-about-banner [name]="currentItem" [bnrImg]="bnrImg"></app-about-banner>
+<section class="py-4 contact-us">
+    <div class="container">
+        <h2 class="sub-heading py-4">Contact Us with Codexview</h2>
+        <div class="row justify-content-start gy-4">
+            <div class="col-lg-7">
+                <form class="row g-3" (ngSubmit)="handleContactSubmit()">
+                    <div class="col-md-6">
+                        <label class="form-label">Your Name</label>
+                        <input (input)="handleChange($event)" type="text" class="form-control" [ngClass]="{'errRed': borderContactNameErr}" name="name" />
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label">Your Email</label>
+                        <input (input)="handleChange($event)" type="email" class="form-control" [ngClass]="{'errRed': borderContactEmailErr}" name="email" />
+                    </div>
+                    <div class="col-md-6">
+                        <label for="inputSubject" class="form-label">Phone</label>
+                        <input (input)="handleChange($event)" name="phone" type="number" class="form-control" [ngClass]="{'errRed': borderContactPhoneErr}" />
+                    </div>
+                    <div class="col-md-6">
+                        <label for="inputSubject" class="form-label">Subject</label>
+                        <input (input)="handleChange($event)" name="subject" type="text" class="form-control" [ngClass]="{'errRed': borderContactSubjectErr}" />
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label">Message</label>
+                        <textarea (input)="handleChange($event)" class="form-control" [ngClass]="{'errRed': borderContactMessageErr}" name="message" rows="3"></textarea>
+                    </div>
+                    <div class="col-md-2">
+                        <button type="submit" class="site-form-btn">Submit</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-lg-4 ms-lg-5">
+                <ul class="list-group">
+                    <li class="list-group-item py-lg-4 py-2">
+                        <a href="mailto:info@bepoj.com" title="info@bepoj.com">
+                            <span class="me-3 email-txt fw-bold">Email:</span>info@codexview.com
+                        </a>
+                    </li>
+                    <li class="list-group-item py-lg-4 py-2">
+                        <a href="/" title="Codex View" target="_blank">
+                            <span class="me-3 email-txt fw-bold">Website:</span>www.codexview.com
+                        </a>
+                    </li>
+                    <li class="list-group-item py-lg-4 py-2">
+                        <a href="tel:9805999805" title="9805999805">
+                            <span class="me-3 email-txt fw-bold">Contact:</span>9805999805
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
